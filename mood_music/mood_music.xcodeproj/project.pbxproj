@@ -1,0 +1,352 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0009855A15447BAC0007C369 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0009855915447BAC0007C369 /* UIKit.framework */; };
+		0009855C15447BAC0007C369 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0009855B15447BAC0007C369 /* Foundation.framework */; };
+		0009855E15447BAC0007C369 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0009855D15447BAC0007C369 /* CoreGraphics.framework */; };
+		0009856415447BAC0007C369 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0009856215447BAC0007C369 /* InfoPlist.strings */; };
+		0009856615447BAC0007C369 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009856515447BAC0007C369 /* main.m */; };
+		0009856A15447BAC0007C369 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009856915447BAC0007C369 /* AppDelegate.m */; };
+		0009856D15447BAC0007C369 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009856C15447BAC0007C369 /* MasterViewController.m */; };
+		0009857015447BAC0007C369 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009856F15447BAC0007C369 /* DetailViewController.m */; };
+		0009857315447BAC0007C369 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0009857115447BAC0007C369 /* MasterViewController.xib */; };
+		0009857615447BAC0007C369 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0009857415447BAC0007C369 /* DetailViewController.xib */; };
+		000985A5154480D00007C369 /* noArtworkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 000985A0154480D00007C369 /* noArtworkImage.png */; };
+		000985A6154480D00007C369 /* NextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 000985A1154480D00007C369 /* NextButton.png */; };
+		000985A7154480D00007C369 /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 000985A2154480D00007C369 /* pauseButton.png */; };
+		000985A8154480D00007C369 /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 000985A3154480D00007C369 /* playButton.png */; };
+		000985A9154480D00007C369 /* PreviousButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 000985A4154480D00007C369 /* PreviousButton.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0009855515447BAC0007C369 /* mood_music.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mood_music.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0009855915447BAC0007C369 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0009855B15447BAC0007C369 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0009855D15447BAC0007C369 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0009856115447BAC0007C369 /* mood_music-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "mood_music-Info.plist"; sourceTree = "<group>"; };
+		0009856315447BAC0007C369 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0009856515447BAC0007C369 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0009856715447BAC0007C369 /* mood_music-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mood_music-Prefix.pch"; sourceTree = "<group>"; };
+		0009856815447BAC0007C369 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0009856915447BAC0007C369 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0009856B15447BAC0007C369 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = mood_music/MasterViewController.h; sourceTree = "<group>"; };
+		0009856C15447BAC0007C369 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = mood_music/MasterViewController.m; sourceTree = "<group>"; };
+		0009856E15447BAC0007C369 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = mood_music/DetailViewController.h; sourceTree = "<group>"; };
+		0009856F15447BAC0007C369 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = mood_music/DetailViewController.m; sourceTree = "<group>"; };
+		0009857215447BAC0007C369 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
+		0009857515447BAC0007C369 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		000985A0154480D00007C369 /* noArtworkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noArtworkImage.png; sourceTree = "<group>"; };
+		000985A1154480D00007C369 /* NextButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NextButton.png; sourceTree = "<group>"; };
+		000985A2154480D00007C369 /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseButton.png; sourceTree = "<group>"; };
+		000985A3154480D00007C369 /* playButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playButton.png; sourceTree = "<group>"; };
+		000985A4154480D00007C369 /* PreviousButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreviousButton.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0009855215447BAC0007C369 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0009855A15447BAC0007C369 /* UIKit.framework in Frameworks */,
+				0009855C15447BAC0007C369 /* Foundation.framework in Frameworks */,
+				0009855E15447BAC0007C369 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0009854A15447BAC0007C369 = {
+			isa = PBXGroup;
+			children = (
+				0009857D15447C160007C369 /* Classes */,
+				0009855F15447BAC0007C369 /* mood_music */,
+				0009857C15447BF30007C369 /* Resources */,
+				0009855815447BAC0007C369 /* Frameworks */,
+				0009855615447BAC0007C369 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0009855615447BAC0007C369 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0009855515447BAC0007C369 /* mood_music.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0009855815447BAC0007C369 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0009855915447BAC0007C369 /* UIKit.framework */,
+				0009855B15447BAC0007C369 /* Foundation.framework */,
+				0009855D15447BAC0007C369 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0009855F15447BAC0007C369 /* mood_music */ = {
+			isa = PBXGroup;
+			children = (
+				0009856815447BAC0007C369 /* AppDelegate.h */,
+				0009856915447BAC0007C369 /* AppDelegate.m */,
+				0009856015447BAC0007C369 /* Supporting Files */,
+			);
+			path = mood_music;
+			sourceTree = "<group>";
+		};
+		0009856015447BAC0007C369 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0009856115447BAC0007C369 /* mood_music-Info.plist */,
+				0009856215447BAC0007C369 /* InfoPlist.strings */,
+				0009856515447BAC0007C369 /* main.m */,
+				0009856715447BAC0007C369 /* mood_music-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0009857C15447BF30007C369 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0009859F154480BC0007C369 /* Images */,
+				0009859E154480B40007C369 /* XIB */,
+			);
+			name = Resources;
+			path = mood_music;
+			sourceTree = "<group>";
+		};
+		0009857D15447C160007C369 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0009856B15447BAC0007C369 /* MasterViewController.h */,
+				0009856C15447BAC0007C369 /* MasterViewController.m */,
+				0009856E15447BAC0007C369 /* DetailViewController.h */,
+				0009856F15447BAC0007C369 /* DetailViewController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		0009859E154480B40007C369 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				0009857115447BAC0007C369 /* MasterViewController.xib */,
+				0009857415447BAC0007C369 /* DetailViewController.xib */,
+			);
+			name = XIB;
+			sourceTree = "<group>";
+		};
+		0009859F154480BC0007C369 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				000985A0154480D00007C369 /* noArtworkImage.png */,
+				000985A1154480D00007C369 /* NextButton.png */,
+				000985A2154480D00007C369 /* pauseButton.png */,
+				000985A3154480D00007C369 /* playButton.png */,
+				000985A4154480D00007C369 /* PreviousButton.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0009855415447BAC0007C369 /* mood_music */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0009857915447BAC0007C369 /* Build configuration list for PBXNativeTarget "mood_music" */;
+			buildPhases = (
+				0009855115447BAC0007C369 /* Sources */,
+				0009855215447BAC0007C369 /* Frameworks */,
+				0009855315447BAC0007C369 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = mood_music;
+			productName = mood_music;
+			productReference = 0009855515447BAC0007C369 /* mood_music.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0009854C15447BAC0007C369 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 0009854F15447BAC0007C369 /* Build configuration list for PBXProject "mood_music" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0009854A15447BAC0007C369;
+			productRefGroup = 0009855615447BAC0007C369 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0009855415447BAC0007C369 /* mood_music */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0009855315447BAC0007C369 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0009856415447BAC0007C369 /* InfoPlist.strings in Resources */,
+				0009857315447BAC0007C369 /* MasterViewController.xib in Resources */,
+				0009857615447BAC0007C369 /* DetailViewController.xib in Resources */,
+				000985A5154480D00007C369 /* noArtworkImage.png in Resources */,
+				000985A6154480D00007C369 /* NextButton.png in Resources */,
+				000985A7154480D00007C369 /* pauseButton.png in Resources */,
+				000985A8154480D00007C369 /* playButton.png in Resources */,
+				000985A9154480D00007C369 /* PreviousButton.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0009855115447BAC0007C369 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0009856615447BAC0007C369 /* main.m in Sources */,
+				0009856A15447BAC0007C369 /* AppDelegate.m in Sources */,
+				0009856D15447BAC0007C369 /* MasterViewController.m in Sources */,
+				0009857015447BAC0007C369 /* DetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0009856215447BAC0007C369 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0009856315447BAC0007C369 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0009857115447BAC0007C369 /* MasterViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0009857215447BAC0007C369 /* en */,
+			);
+			name = MasterViewController.xib;
+			sourceTree = "<group>";
+		};
+		0009857415447BAC0007C369 /* DetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0009857515447BAC0007C369 /* en */,
+			);
+			name = DetailViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0009857715447BAC0007C369 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0009857815447BAC0007C369 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0009857A15447BAC0007C369 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mood_music/mood_music-Prefix.pch";
+				INFOPLIST_FILE = "mood_music/mood_music-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0009857B15447BAC0007C369 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "mood_music/mood_music-Prefix.pch";
+				INFOPLIST_FILE = "mood_music/mood_music-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0009854F15447BAC0007C369 /* Build configuration list for PBXProject "mood_music" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0009857715447BAC0007C369 /* Debug */,
+				0009857815447BAC0007C369 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0009857915447BAC0007C369 /* Build configuration list for PBXNativeTarget "mood_music" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0009857A15447BAC0007C369 /* Debug */,
+				0009857B15447BAC0007C369 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0009854C15447BAC0007C369 /* Project object */;
+}
