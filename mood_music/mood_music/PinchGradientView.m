@@ -8,7 +8,7 @@
 
 #import "PinchGradientView.h"
 
-#define ANIMATION_DURATION 1.f
+#define ANIMATION_DURATION 2.f
 
 @implementation PinchGradientView
 
@@ -140,7 +140,7 @@
 	if( index > pitchData.count - 1 )
 		index = 0;
 	[self animFrom:[pitchData objectAtIndex:index] animto:[pitchData objectAtIndex:index + 1]];
-	[self performSelector:@selector(performGradientAnimationFromNumber:) withObject:[NSNumber numberWithInt:index+1] afterDelay:ANIMATION_DURATION + 1.f];
+	[self performSelector:@selector(performGradientAnimationFromNumber:) withObject:[NSNumber numberWithInt:index+1] afterDelay:ANIMATION_DURATION];
 }
 	 
 - (void)performGradientAnimationFromNumber:(NSNumber*)index
