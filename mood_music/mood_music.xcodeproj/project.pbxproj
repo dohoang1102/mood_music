@@ -22,6 +22,13 @@
 		000985A7154480D00007C369 /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 000985A2154480D00007C369 /* pauseButton.png */; };
 		000985A8154480D00007C369 /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 000985A3154480D00007C369 /* playButton.png */; };
 		000985A9154480D00007C369 /* PreviousButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 000985A4154480D00007C369 /* PreviousButton.png */; };
+		000985AB154482670007C369 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985AA154482670007C369 /* QuartzCore.framework */; };
+		000985AD1544826C0007C369 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985AC1544826C0007C369 /* AVFoundation.framework */; };
+		000985AF1544827C0007C369 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985AE1544827C0007C369 /* CFNetwork.framework */; };
+		000985B1154482990007C369 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985B0154482990007C369 /* libz.dylib */; };
+		000985B3154482A40007C369 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985B2154482A40007C369 /* MediaPlayer.framework */; };
+		000985B5154482B30007C369 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985B4154482B30007C369 /* MobileCoreServices.framework */; };
+		000985B7154482BF0007C369 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985B6154482BF0007C369 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +53,13 @@
 		000985A2154480D00007C369 /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseButton.png; sourceTree = "<group>"; };
 		000985A3154480D00007C369 /* playButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playButton.png; sourceTree = "<group>"; };
 		000985A4154480D00007C369 /* PreviousButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PreviousButton.png; sourceTree = "<group>"; };
+		000985AA154482670007C369 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		000985AC1544826C0007C369 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		000985AE1544827C0007C369 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		000985B0154482990007C369 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		000985B2154482A40007C369 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		000985B4154482B30007C369 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		000985B6154482BF0007C369 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +67,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000985B7154482BF0007C369 /* SystemConfiguration.framework in Frameworks */,
+				000985B5154482B30007C369 /* MobileCoreServices.framework in Frameworks */,
+				000985B3154482A40007C369 /* MediaPlayer.framework in Frameworks */,
+				000985B1154482990007C369 /* libz.dylib in Frameworks */,
+				000985AF1544827C0007C369 /* CFNetwork.framework in Frameworks */,
+				000985AD1544826C0007C369 /* AVFoundation.framework in Frameworks */,
+				000985AB154482670007C369 /* QuartzCore.framework in Frameworks */,
 				0009855A15447BAC0007C369 /* UIKit.framework in Frameworks */,
 				0009855C15447BAC0007C369 /* Foundation.framework in Frameworks */,
 				0009855E15447BAC0007C369 /* CoreGraphics.framework in Frameworks */,
@@ -84,6 +105,13 @@
 		0009855815447BAC0007C369 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				000985B6154482BF0007C369 /* SystemConfiguration.framework */,
+				000985B4154482B30007C369 /* MobileCoreServices.framework */,
+				000985B2154482A40007C369 /* MediaPlayer.framework */,
+				000985B0154482990007C369 /* libz.dylib */,
+				000985AE1544827C0007C369 /* CFNetwork.framework */,
+				000985AC1544826C0007C369 /* AVFoundation.framework */,
+				000985AA154482670007C369 /* QuartzCore.framework */,
 				0009855915447BAC0007C369 /* UIKit.framework */,
 				0009855B15447BAC0007C369 /* Foundation.framework */,
 				0009855D15447BAC0007C369 /* CoreGraphics.framework */,

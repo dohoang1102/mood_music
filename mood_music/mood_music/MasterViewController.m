@@ -29,4 +29,10 @@
     // Release any retained subviews of the main view.
 }
 
+// show detailed view with mood chart
+- (IBAction)showDetailedView:(id)sender
+{
+	// not yet implemented
+}
+
 @end

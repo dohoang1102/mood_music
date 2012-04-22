@@ -40,7 +40,7 @@
 						<int key="NSvFlags">298</int>
 						<string key="NSFrame">{{20, 209}, {280, 18}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<object class="NSColor" key="IBUIBackgroundColor" id="455103699">
+						<object class="NSColor" key="IBUIBackgroundColor" id="144236435">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
@@ -69,7 +69,7 @@
 				</array>
 				<string key="NSFrame">{{0, 44}, {320, 436}}</string>
 				<reference key="NSSuperview"/>
-				<reference key="IBUIBackgroundColor" ref="455103699"/>
+				<reference key="IBUIBackgroundColor" ref="144236435"/>
 				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
 					<int key="IBUIBarStyle">1</int>
 					<bool key="IBUIPrompted">NO</bool>
