@@ -11,11 +11,11 @@
 
 @implementation MasterViewController
 
-@synthesize detailViewController;
 @synthesize musicPlayer;
 @synthesize volumeSlider;
 @synthesize playPauseButton;
 @synthesize artworkImageView;
+@synthesize gradientBackground;
 @synthesize suggestRequest;
 
 #pragma mark - Memory management
@@ -35,6 +35,7 @@
 												  object: musicPlayer];
     
 	[musicPlayer endGeneratingPlaybackNotifications];
+	[gradientBackground cancelLoading];
 	[suggestRequest cancel];
 }
 
@@ -57,7 +58,11 @@
 	[self setVolumeSlider:nil];
 	[self setPlayPauseButton:nil];
 	[self setArtworkImageView:nil];
+	[self setGradientBackground:nil];
+	
+	[gradientBackground cancelLoading];
 	[suggestRequest cancel];
+
     [super viewDidUnload];
 }
 
@@ -94,7 +99,9 @@
 // show detailed view with mood chart
 - (IBAction)showDetailedView:(id)sender
 {
-	// not yet implemented
+	// create new view controller and push
+	DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+	[self.navigationController pushViewController:detailViewController animated:YES];
 }
 
 - (IBAction)volumeChanged:(id)sender 
@@ -117,7 +124,7 @@
 
 - (IBAction)nextSong:(id)sender 
 {
-    [musicPlayer skipToNextItem];
+	[musicPlayer skipToNextItem];
 }
 
 #pragma mark - Notifications
@@ -199,7 +206,7 @@
 {
     if (mediaItemCollection) 
 	{
-        [musicPlayer setQueueWithItemCollection:mediaItemCollection];
+		[musicPlayer setQueueWithItemCollection:mediaItemCollection];
         [musicPlayer play];
     }
 	[self dismissModalViewControllerAnimated: YES];
@@ -218,18 +225,10 @@
 	// The Echo Nest server has repsonded. 
 	// There are handy accessors for the Echo Nest status
 	// code and status message
-	if (0 != request.echonestStatusCode) 
-	{
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Echo Nest Error", @"")
-														message:request.echonestStatusMessage
-													   delegate:nil
-											  cancelButtonTitle:NSLocalizedString(@"OK", @"")
-											  otherButtonTitles:nil];
-		[alert show];
-		return;
-	}
+	NSLog(@"echonestStatusMessage %@, %@", request, request.echonestStatusMessage);
     NSArray *songs = [request.response valueForKeyPath:@"response.songs"];
 	NSString* detailDataUrl = [[songs lastObject] valueForKeyPath:@"audio_summary.analysis_url"];
+	[gradientBackground loadDataAtURL:[NSURL URLWithString:detailDataUrl]];
 }
 
 - (void)requestFailed:(ENAPIRequest *)request 
@@ -237,12 +236,7 @@
     // The request or connection failed at a low level, use
 	// the request's error property to get information on the
 	// failure
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Connection Error", @"")
-													message:[request.error localizedDescription]
-												   delegate:nil
-										  cancelButtonTitle:NSLocalizedString(@"OK", @"")
-										  otherButtonTitles:nil];
-	[alert show];
+	NSLog(@"Failed to load at %@, %@", request, [request.error localizedDescription]);
 }
 
 #pragma mark - Private methods
@@ -253,6 +247,7 @@
 	// ask the Echo Nest server for suggestions
     [suggestRequest setValue:artist forParameter:@"artist"];
 	[suggestRequest setValue:album forParameter:@"title"];
+	[gradientBackground cancelLoading];
 	[suggestRequest cancel];
     [suggestRequest startAsynchronous];
 }

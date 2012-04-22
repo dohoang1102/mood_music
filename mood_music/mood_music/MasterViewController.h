@@ -10,13 +10,12 @@
 #import "ENAPI.h"
 #import <QuartzCore/QuartzCore.h>
 #import <MediaPlayer/MediaPlayer.h>
-
-@class DetailViewController;
+#import "PinchGradientView.h"
 
 @interface MasterViewController : UIViewController <MPMediaPickerControllerDelegate,ENAPIRequestDelegate>
 
+@property (strong, nonatomic) IBOutlet PinchGradientView *gradientBackground;
 @property (strong, nonatomic) ENAPIRequest* suggestRequest;
-@property (strong, nonatomic) DetailViewController *detailViewController;
 @property (strong, nonatomic) MPMusicPlayerController *musicPlayer;
 @property (strong, nonatomic) IBOutlet UISlider *volumeSlider;
 @property (strong, nonatomic) IBOutlet UIButton *playPauseButton;
