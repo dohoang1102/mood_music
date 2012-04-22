@@ -30,6 +30,7 @@
 		000985B5154482B30007C369 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985B4154482B30007C369 /* MobileCoreServices.framework */; };
 		000985B7154482BF0007C369 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985B6154482BF0007C369 /* SystemConfiguration.framework */; };
 		000985DC154485B70007C369 /* libechonest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985D7154485240007C369 /* libechonest.a */; };
+		00DCB6801544A7FC00092B09 /* PinchGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DCB67F1544A7FC00092B09 /* PinchGradientView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		000985B4154482B30007C369 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		000985B6154482BF0007C369 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		000985CE154485240007C369 /* libechonest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libechonest.xcodeproj; path = ../libechonest/libechonest.xcodeproj; sourceTree = "<group>"; };
+		00DCB67E1544A7FC00092B09 /* PinchGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinchGradientView.h; path = mood_music/PinchGradientView.h; sourceTree = "<group>"; };
+		00DCB67F1544A7FC00092B09 /* PinchGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PinchGradientView.m; path = mood_music/PinchGradientView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,7 @@
 			children = (
 				000985CE154485240007C369 /* libechonest.xcodeproj */,
 				0009857D15447C160007C369 /* Classes */,
+				00DCB67B1544A5BF00092B09 /* Views */,
 				0009855F15447BAC0007C369 /* mood_music */,
 				0009857C15447BF30007C369 /* Resources */,
 				0009855815447BAC0007C369 /* Frameworks */,
@@ -219,6 +223,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		00DCB67B1544A5BF00092B09 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				00DCB67E1544A7FC00092B09 /* PinchGradientView.h */,
+				00DCB67F1544A7FC00092B09 /* PinchGradientView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,6 +328,7 @@
 				0009856A15447BAC0007C369 /* AppDelegate.m in Sources */,
 				0009856D15447BAC0007C369 /* MasterViewController.m in Sources */,
 				0009857015447BAC0007C369 /* DetailViewController.m in Sources */,
+				00DCB6801544A7FC00092B09 /* PinchGradientView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +390,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -398,7 +412,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -416,7 +430,7 @@
 				GCC_PREFIX_HEADER = "mood_music/mood_music-Prefix.pch";
 				INFOPLIST_FILE = "mood_music/mood_music-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"../libechonest/libechonest/src\"";
+				USER_HEADER_SEARCH_PATHS = "\"../libechonest/libechonest/src\" \"../libechonest/libechonest/src/JSON\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -428,7 +442,7 @@
 				GCC_PREFIX_HEADER = "mood_music/mood_music-Prefix.pch";
 				INFOPLIST_FILE = "mood_music/mood_music-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"../libechonest/libechonest/src\"";
+				USER_HEADER_SEARCH_PATHS = "\"../libechonest/libechonest/src\" \"../libechonest/libechonest/src/JSON\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -452,6 +466,7 @@
 				0009857B15447BAC0007C369 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
