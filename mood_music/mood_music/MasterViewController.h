@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ENAPI.h"
 
 @class DetailViewController;
 

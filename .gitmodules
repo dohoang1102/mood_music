@@ -1,0 +1,3 @@
+[submodule "libechonest"]
+	path = libechonest
+	url = https://github.com/echonest/libechonest.git
