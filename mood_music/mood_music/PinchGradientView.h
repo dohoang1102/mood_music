@@ -14,6 +14,8 @@
 
 @interface PinchGradientView : UIView <NSURLConnectionDelegate>
 
+@property(nonatomic,readwrite) NSInteger animationIndex;
+@property(nonatomic,strong) NSTimer* animationTimer;
 @property(nonatomic,strong) NSArray* pitchData;
 @property(nonatomic,strong) NSURLConnection* connection;
 @property(nonatomic,strong) NSMutableData* recivedData;
@@ -24,6 +26,6 @@
 - (void)animFrom:(NSArray*)arrayColorFrom animto:(NSArray*)arrayColorTo;
 - (id)pitchToColorHsb:(NSNumber*)pitch;
 - (id)pitchToColorRgb:(NSNumber*)pitch;
-- (void)performGradientAnimationFromIndex:(NSInteger)index;
+- (void)performGradientAnimationFromIndex;
 
 @end

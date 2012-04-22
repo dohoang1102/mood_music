@@ -11,6 +11,7 @@
 
 @implementation MasterViewController
 
+@synthesize currentMediaCollection;
 @synthesize musicPlayer;
 @synthesize volumeSlider;
 @synthesize playPauseButton;
@@ -87,11 +88,6 @@
         [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
 	
     [self registerMediaPlayerNotifications];
-	
-	suggestRequest = [[ENAPIRequest alloc] initWithEndpoint:@"song/search"];
-	[suggestRequest setValue:@"1" forParameter:@"results"];
-	[suggestRequest setValue:@"audio_summary" forParameter:@"bucket"];
-	suggestRequest.delegate = self;
 }
 
 #pragma mark - IBActions
@@ -111,7 +107,7 @@
 
 - (IBAction)previousSong:(id)sender 
 {
-    [musicPlayer skipToPreviousItem];
+	[musicPlayer skipToPreviousItem];
 }
 
 - (IBAction)playPause:(id)sender 
@@ -245,10 +241,14 @@
 - (void)getSongDataArtist:(NSString*)artist album:(NSString*)album songName:(NSString*)songName
 {
 	// ask the Echo Nest server for suggestions
-    [suggestRequest setValue:artist forParameter:@"artist"];
-	[suggestRequest setValue:album forParameter:@"title"];
 	[gradientBackground cancelLoading];
 	[suggestRequest cancel];
+	suggestRequest = [[ENAPIRequest alloc] initWithEndpoint:@"song/search"];
+	[suggestRequest setValue:@"1" forParameter:@"results"];
+	[suggestRequest setValue:@"audio_summary" forParameter:@"bucket"];
+	suggestRequest.delegate = self;
+    [suggestRequest setValue:artist forParameter:@"artist"];
+	[suggestRequest setValue:songName forParameter:@"title"];
     [suggestRequest startAsynchronous];
 }
 

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UISlider *volumeSlider;
 @property (strong, nonatomic) IBOutlet UIButton *playPauseButton;
 @property (strong, nonatomic) IBOutlet UIImageView *artworkImageView;
+@property (strong, nonatomic) MPMediaItemCollection *currentMediaCollection;
 
 - (IBAction)showMediaPicker:(id)sender;
 - (IBAction)volumeChanged:(id)sender;

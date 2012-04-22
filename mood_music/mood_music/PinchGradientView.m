@@ -12,13 +12,27 @@
 
 @implementation PinchGradientView
 
+@synthesize animationIndex;
 @synthesize pitchData;
 @synthesize recivedData;
 @synthesize connection;
+@synthesize animationTimer;
 
 + (Class)layerClass 
 {
     return [CAGradientLayer class];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super initWithCoder:aDecoder];
+    if (self) 
+	{
+		animationIndex = 0;
+        animationTimer = [NSTimer scheduledTimerWithTimeInterval:ANIMATION_DURATION target:self selector:@selector(performGradientAnimationFromIndex) userInfo:nil repeats:YES];
+    }
+    return self;
+
 }
 
 #pragma mark - Memory management
@@ -129,23 +143,21 @@
         
         // on main thread set data arrays
         dispatch_async(dispatch_get_main_queue(), ^{
+			animationIndex = 0;
             pitchData = [NSArray arrayWithArray:buffer];
-			[self performGradientAnimationFromIndex:0];
         });
     });
 }
 
-- (void)performGradientAnimationFromIndex:(NSInteger)index
+- (void)performGradientAnimationFromIndex
 {
-	if( index > pitchData.count - 1 )
-		index = 0;
-	[self animFrom:[pitchData objectAtIndex:index] animto:[pitchData objectAtIndex:index + 1]];
-	[self performSelector:@selector(performGradientAnimationFromNumber:) withObject:[NSNumber numberWithInt:index+1] afterDelay:ANIMATION_DURATION];
-}
-	 
-- (void)performGradientAnimationFromNumber:(NSNumber*)index
-{
-	[self performGradientAnimationFromIndex:[index intValue]];
+	if( pitchData.count > 0 )
+	{
+		if( animationIndex > pitchData.count - 1 )
+			animationIndex = 0;
+		[self animFrom:[pitchData objectAtIndex:animationIndex] animto:[pitchData objectAtIndex:++animationIndex]];
+
+	}
 }
 
 @end
