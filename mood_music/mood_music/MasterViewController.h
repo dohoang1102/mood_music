@@ -13,10 +13,11 @@
 
 @class DetailViewController;
 
-@interface MasterViewController : UIViewController <MPMediaPickerControllerDelegate>
+@interface MasterViewController : UIViewController <MPMediaPickerControllerDelegate,ENAPIRequestDelegate>
 
+@property (strong, nonatomic) ENAPIRequest* suggestRequest;
 @property (strong, nonatomic) DetailViewController *detailViewController;
-@property (nonatomic, retain) MPMusicPlayerController *musicPlayer;
+@property (strong, nonatomic) MPMusicPlayerController *musicPlayer;
 @property (strong, nonatomic) IBOutlet UISlider *volumeSlider;
 @property (strong, nonatomic) IBOutlet UIButton *playPauseButton;
 @property (strong, nonatomic) IBOutlet UIImageView *artworkImageView;
@@ -30,5 +31,6 @@
 - (void)registerMediaPlayerNotifications;
 - (void)handleNowPlayingItemChanged:(id)notification;
 - (void)handlePlaybackStateChanged:(id)notification;
+- (void)getSongDataArtist:(NSString*)artist album:(NSString*)album songName:(NSString*)songName;
 
 @end

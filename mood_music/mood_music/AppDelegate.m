@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 
 #import "MasterViewController.h"
+#import "ENAPI.h"
+
+#pragma error "Set this to your Echo Nest API Key"
+static NSString *TEST_API_KEY = @"2J12S2GOSDBV2KC6V";
 
 @implementation AppDelegate
 
@@ -19,6 +23,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+	[ENAPI initWithApiKey:TEST_API_KEY];
 	MasterViewController *masterViewController = [[MasterViewController alloc] initWithNibName:@"MasterViewController" bundle:nil];
 	self.navigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
 	self.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;

@@ -16,6 +16,7 @@
 @synthesize volumeSlider;
 @synthesize playPauseButton;
 @synthesize artworkImageView;
+@synthesize suggestRequest;
 
 #pragma mark - Memory management
 
@@ -34,6 +35,7 @@
 												  object: musicPlayer];
     
 	[musicPlayer endGeneratingPlaybackNotifications];
+	[suggestRequest cancel];
 }
 
 - (void)viewDidUnload
@@ -55,6 +57,7 @@
 	[self setVolumeSlider:nil];
 	[self setPlayPauseButton:nil];
 	[self setArtworkImageView:nil];
+	[suggestRequest cancel];
     [super viewDidUnload];
 }
 
@@ -79,7 +82,11 @@
         [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
 	
     [self registerMediaPlayerNotifications];
-
+	
+	suggestRequest = [[ENAPIRequest alloc] initWithEndpoint:@"song/search"];
+	[suggestRequest setValue:@"1" forParameter:@"results"];
+	[suggestRequest setValue:@"audio_summary" forParameter:@"bucket"];
+	suggestRequest.delegate = self;
 }
 
 #pragma mark - IBActions
@@ -148,25 +155,11 @@
     [artworkImageView setImage:artworkImage];
     
     NSString *titleString = [currentItem valueForProperty:MPMediaItemPropertyTitle];
-    if (titleString) {
-       // titleLabel.text = [NSString stringWithFormat:@"Title: %@",titleString];
-    } else {
-      //  titleLabel.text = @"Title: Unknown title";
-    }
-    
     NSString *artistString = [currentItem valueForProperty:MPMediaItemPropertyArtist];
-    if (artistString) {
-      //  artistLabel.text = [NSString stringWithFormat:@"Artist: %@",artistString];
-    } else {
-       // artistLabel.text = @"Artist: Unknown artist";
-    }
-    
     NSString *albumString = [currentItem valueForProperty:MPMediaItemPropertyAlbumTitle];
-    if (albumString) {
-     //   albumLabel.text = [NSString stringWithFormat:@"Album: %@",albumString];
-    } else {
-      //  albumLabel.text = @"Album: Unknown album";
-    }
+
+	self.navigationItem.title = [NSString stringWithFormat:@"%@ %@",artistString, titleString];
+	[self getSongDataArtist:artistString album:albumString songName:titleString];
 }
 
 - (void)handlePlaybackStateChanged:(id)notification 
@@ -194,7 +187,7 @@
 - (IBAction)showMediaPicker:(id)sender
 {
     MPMediaPickerController *mediaPicker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeAny];
-    
+	mediaPicker.navigationController.navigationBar.barStyle = UIBarStyleBlackOpaque;
     mediaPicker.delegate = self;
     mediaPicker.allowsPickingMultipleItems = YES;
     mediaPicker.prompt = @"Select songs to play";
@@ -209,7 +202,6 @@
         [musicPlayer setQueueWithItemCollection:mediaItemCollection];
         [musicPlayer play];
     }
-    
 	[self dismissModalViewControllerAnimated: YES];
 }
 
@@ -218,5 +210,52 @@
 {
 	[self dismissModalViewControllerAnimated: YES];
 }
+
+#pragma mark - ENAPIRequestDelegate
+
+- (void)requestFinished:(ENAPIRequest *)request 
+{
+	// The Echo Nest server has repsonded. 
+	// There are handy accessors for the Echo Nest status
+	// code and status message
+	if (0 != request.echonestStatusCode) 
+	{
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Echo Nest Error", @"")
+														message:request.echonestStatusMessage
+													   delegate:nil
+											  cancelButtonTitle:NSLocalizedString(@"OK", @"")
+											  otherButtonTitles:nil];
+		[alert show];
+		return;
+	}
+    NSArray *songs = [request.response valueForKeyPath:@"response.songs"];
+	NSString* detailDataUrl = [[songs lastObject] valueForKeyPath:@"audio_summary.analysis_url"];
+}
+
+- (void)requestFailed:(ENAPIRequest *)request 
+{
+    // The request or connection failed at a low level, use
+	// the request's error property to get information on the
+	// failure
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Connection Error", @"")
+													message:[request.error localizedDescription]
+												   delegate:nil
+										  cancelButtonTitle:NSLocalizedString(@"OK", @"")
+										  otherButtonTitles:nil];
+	[alert show];
+}
+
+#pragma mark - Private methods
+
+// start ENAPIRequest to get the data abot the song
+- (void)getSongDataArtist:(NSString*)artist album:(NSString*)album songName:(NSString*)songName
+{
+	// ask the Echo Nest server for suggestions
+    [suggestRequest setValue:artist forParameter:@"artist"];
+	[suggestRequest setValue:album forParameter:@"title"];
+	[suggestRequest cancel];
+    [suggestRequest startAsynchronous];
+}
+
 
 @end
