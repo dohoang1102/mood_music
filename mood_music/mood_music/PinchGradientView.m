@@ -65,7 +65,6 @@
 		recivedData = nil;
 	}
 	connection = nil;
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 - (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error
@@ -149,6 +148,7 @@
         
         // on main thread set data arrays
         dispatch_async(dispatch_get_main_queue(), ^{
+			[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             pitchData = [NSArray arrayWithArray:buffer];
         });
     });

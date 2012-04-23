@@ -14,9 +14,7 @@
 		0009856615447BAC0007C369 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009856515447BAC0007C369 /* main.m */; };
 		0009856A15447BAC0007C369 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009856915447BAC0007C369 /* AppDelegate.m */; };
 		0009856D15447BAC0007C369 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009856C15447BAC0007C369 /* MasterViewController.m */; };
-		0009857015447BAC0007C369 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0009856F15447BAC0007C369 /* DetailViewController.m */; };
 		0009857315447BAC0007C369 /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0009857115447BAC0007C369 /* MasterViewController.xib */; };
-		0009857615447BAC0007C369 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0009857415447BAC0007C369 /* DetailViewController.xib */; };
 		000985A5154480D00007C369 /* noArtworkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 000985A0154480D00007C369 /* noArtworkImage.png */; };
 		000985A6154480D00007C369 /* NextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 000985A1154480D00007C369 /* NextButton.png */; };
 		000985A7154480D00007C369 /* pauseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 000985A2154480D00007C369 /* pauseButton.png */; };
@@ -70,10 +68,7 @@
 		0009856915447BAC0007C369 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0009856B15447BAC0007C369 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = mood_music/MasterViewController.h; sourceTree = "<group>"; };
 		0009856C15447BAC0007C369 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = mood_music/MasterViewController.m; sourceTree = "<group>"; };
-		0009856E15447BAC0007C369 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = mood_music/DetailViewController.h; sourceTree = "<group>"; };
-		0009856F15447BAC0007C369 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = mood_music/DetailViewController.m; sourceTree = "<group>"; };
 		0009857215447BAC0007C369 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MasterViewController.xib; sourceTree = "<group>"; };
-		0009857515447BAC0007C369 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
 		000985A0154480D00007C369 /* noArtworkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noArtworkImage.png; sourceTree = "<group>"; };
 		000985A1154480D00007C369 /* NextButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NextButton.png; sourceTree = "<group>"; };
 		000985A2154480D00007C369 /* pauseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseButton.png; sourceTree = "<group>"; };
@@ -187,8 +182,6 @@
 			children = (
 				0009856B15447BAC0007C369 /* MasterViewController.h */,
 				0009856C15447BAC0007C369 /* MasterViewController.m */,
-				0009856E15447BAC0007C369 /* DetailViewController.h */,
-				0009856F15447BAC0007C369 /* DetailViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -197,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				0009857115447BAC0007C369 /* MasterViewController.xib */,
-				0009857415447BAC0007C369 /* DetailViewController.xib */,
 			);
 			name = XIB;
 			sourceTree = "<group>";
@@ -308,7 +300,6 @@
 			files = (
 				0009856415447BAC0007C369 /* InfoPlist.strings in Resources */,
 				0009857315447BAC0007C369 /* MasterViewController.xib in Resources */,
-				0009857615447BAC0007C369 /* DetailViewController.xib in Resources */,
 				000985A5154480D00007C369 /* noArtworkImage.png in Resources */,
 				000985A6154480D00007C369 /* NextButton.png in Resources */,
 				000985A7154480D00007C369 /* pauseButton.png in Resources */,
@@ -327,7 +318,6 @@
 				0009856615447BAC0007C369 /* main.m in Sources */,
 				0009856A15447BAC0007C369 /* AppDelegate.m in Sources */,
 				0009856D15447BAC0007C369 /* MasterViewController.m in Sources */,
-				0009857015447BAC0007C369 /* DetailViewController.m in Sources */,
 				00DCB6801544A7FC00092B09 /* PinchGradientView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,14 +347,6 @@
 				0009857215447BAC0007C369 /* en */,
 			);
 			name = MasterViewController.xib;
-			sourceTree = "<group>";
-		};
-		0009857415447BAC0007C369 /* DetailViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0009857515447BAC0007C369 /* en */,
-			);
-			name = DetailViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

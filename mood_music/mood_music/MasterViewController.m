@@ -7,7 +7,6 @@
 //
 
 #import "MasterViewController.h"
-#import "DetailViewController.h"
 
 @implementation MasterViewController
 
@@ -75,9 +74,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showMediaPicker:)];
 	self.navigationItem.leftBarButtonItem = addButton;
-
-	UIBarButtonItem *actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showDetailedView:)];
-	self.navigationItem.rightBarButtonItem = actionButton;
 	
 	musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     [volumeSlider setValue:[musicPlayer volume]];
@@ -92,14 +88,6 @@
 }
 
 #pragma mark - IBActions
-
-// show detailed view with mood chart
-- (IBAction)showDetailedView:(id)sender
-{
-	// create new view controller and push
-	DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
-	[self.navigationController pushViewController:detailViewController animated:YES];
-}
 
 - (IBAction)volumeChanged:(id)sender 
 {
