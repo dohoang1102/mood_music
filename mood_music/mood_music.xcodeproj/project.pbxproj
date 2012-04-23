@@ -28,6 +28,10 @@
 		000985B5154482B30007C369 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985B4154482B30007C369 /* MobileCoreServices.framework */; };
 		000985B7154482BF0007C369 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985B6154482BF0007C369 /* SystemConfiguration.framework */; };
 		000985DC154485B70007C369 /* libechonest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 000985D7154485240007C369 /* libechonest.a */; };
+		0036F4B11545EDFC003A4B9F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036F4B01545EDFC003A4B9F /* Default@2x.png */; };
+		0036F4BF1545EE8D003A4B9F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036F4BE1545EE8D003A4B9F /* Default.png */; };
+		0036F4D91545EF4C003A4B9F /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036F4D81545EF4C003A4B9F /* Icon.png */; };
+		0036F4DB1545EF50003A4B9F /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0036F4DA1545EF50003A4B9F /* Icon@2x.png */; };
 		00DCB6801544A7FC00092B09 /* PinchGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DCB67F1544A7FC00092B09 /* PinchGradientView.m */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +86,10 @@
 		000985B4154482B30007C369 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		000985B6154482BF0007C369 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		000985CE154485240007C369 /* libechonest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libechonest.xcodeproj; path = ../libechonest/libechonest.xcodeproj; sourceTree = "<group>"; };
+		0036F4B01545EDFC003A4B9F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		0036F4BE1545EE8D003A4B9F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		0036F4D81545EF4C003A4B9F /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		0036F4DA1545EF50003A4B9F /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		00DCB67E1544A7FC00092B09 /* PinchGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PinchGradientView.h; path = mood_music/PinchGradientView.h; sourceTree = "<group>"; };
 		00DCB67F1544A7FC00092B09 /* PinchGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PinchGradientView.m; path = mood_music/PinchGradientView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -197,6 +205,10 @@
 		0009859F154480BC0007C369 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0036F4DA1545EF50003A4B9F /* Icon@2x.png */,
+				0036F4D81545EF4C003A4B9F /* Icon.png */,
+				0036F4BE1545EE8D003A4B9F /* Default.png */,
+				0036F4B01545EDFC003A4B9F /* Default@2x.png */,
 				000985A0154480D00007C369 /* noArtworkImage.png */,
 				000985A1154480D00007C369 /* NextButton.png */,
 				000985A2154480D00007C369 /* pauseButton.png */,
@@ -305,6 +317,10 @@
 				000985A7154480D00007C369 /* pauseButton.png in Resources */,
 				000985A8154480D00007C369 /* playButton.png in Resources */,
 				000985A9154480D00007C369 /* PreviousButton.png in Resources */,
+				0036F4B11545EDFC003A4B9F /* Default@2x.png in Resources */,
+				0036F4BF1545EE8D003A4B9F /* Default.png in Resources */,
+				0036F4D91545EF4C003A4B9F /* Icon.png in Resources */,
+				0036F4DB1545EF50003A4B9F /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

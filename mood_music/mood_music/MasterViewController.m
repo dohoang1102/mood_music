@@ -141,7 +141,7 @@
    	MPMediaItem *currentItem = [musicPlayer nowPlayingItem];
 	UIImage *artworkImage = [UIImage imageNamed:@"noArtworkImage.png"];
 	MPMediaItemArtwork *artwork = [currentItem valueForProperty: MPMediaItemPropertyArtwork];
-	if (artwork) 
+	if( [artwork imageWithSize:CGSizeMake (200, 200)] ) 
 		artworkImage = [artwork imageWithSize:CGSizeMake (200, 200)];
     [artworkImageView setImage:artworkImage];
     
