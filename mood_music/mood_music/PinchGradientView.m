@@ -8,15 +8,17 @@
 
 #import "PinchGradientView.h"
 
-#define ANIMATION_DURATION 2.f
+#define UPDATE_DURATION 0.01f
 
 @implementation PinchGradientView
 
+@synthesize musicPlayer;
 @synthesize animationIndex;
 @synthesize pitchData;
 @synthesize recivedData;
 @synthesize connection;
 @synthesize animationTimer;
+@synthesize isAnimating;
 
 + (Class)layerClass 
 {
@@ -29,7 +31,7 @@
     if (self) 
 	{
 		animationIndex = 0;
-        animationTimer = [NSTimer scheduledTimerWithTimeInterval:ANIMATION_DURATION target:self selector:@selector(performGradientAnimationFromIndex) userInfo:nil repeats:YES];
+        animationTimer = [NSTimer scheduledTimerWithTimeInterval:UPDATE_DURATION target:self selector:@selector(performGradientAnimationFromIndex) userInfo:nil repeats:YES];
     }
     return self;
 
@@ -89,22 +91,22 @@
 {
 	NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
 	[connection cancel];
-	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	// schedule at run loop so any ui event won't prevent the erquest to start
-	[connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-	[connection start];
+	//[connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+	//[connection start];
 }
 
 #pragma mark - Private methods
 
-- (void)animFrom:(NSArray*)arrayColorFrom animto:(NSArray*)arrayColorTo
+- (void)animFrom:(NSArray*)arrayColorFrom animTo:(NSArray*)arrayColorTo withDuration:(NSNumber*)duration
 {
     CAGradientLayer *gLayer = (CAGradientLayer *)self.layer;
     gLayer.colors = arrayColorTo;
 
     CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"colors"];
     anim.fromValue = arrayColorFrom;
-    anim.duration = ANIMATION_DURATION;
+    anim.duration = [duration floatValue] * 0.9f;
 	anim.toValue = arrayColorTo;
     anim.timingFunction = [CAMediaTimingFunction 
                            functionWithName:kCAMediaTimingFunctionEaseOut];
@@ -159,12 +161,27 @@
 {
 	if( pitchData.count > 0 )
 	{
-		if( animationIndex > pitchData.count - 1 )
-			animationIndex = 0;
-		NSArray* colorBufferFrom = [(NSDictionary*)[pitchData objectAtIndex:animationIndex] objectForKey:@"colorBuffer"];
-		NSArray* colorBufferTo = [(NSDictionary*)[pitchData objectAtIndex:++animationIndex] objectForKey:@"colorBuffer"];
-		[self animFrom:colorBufferFrom animto:colorBufferTo];
+		if (!isAnimating)
+		{
+			NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"start >= %f AND start <= %f", (float)musicPlayer.currentPlaybackTime, (float)musicPlayer.currentPlaybackTime + 2]];
+			NSMutableArray* currentPinch = [NSMutableArray arrayWithArray:pitchData];
+			[currentPinch filterUsingPredicate:predicate];
+			if (currentPinch.count > 1)
+			{
+				NSNumber* duration = [(NSDictionary*)[currentPinch objectAtIndex:0] objectForKey:@"duration"];
+				NSArray* colorBufferFrom = [(NSDictionary*)[currentPinch objectAtIndex:0] objectForKey:@"colorBuffer"];
+				NSArray* colorBufferTo = [(NSDictionary*)[currentPinch objectAtIndex:1] objectForKey:@"colorBuffer"];
+				[self animFrom:colorBufferFrom animTo:colorBufferTo withDuration:duration];
+				isAnimating = YES;
+				[self performSelector:@selector(stopAnimation) withObject:nil afterDelay:[duration  floatValue]];
+			}
+		}
 	}
+}
+
+- (void)stopAnimation
+{
+	isAnimating = NO;
 }
 
 @end

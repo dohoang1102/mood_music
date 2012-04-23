@@ -88,6 +88,7 @@
         [playPauseButton setImage:[UIImage imageNamed:@"playButton.png"] forState:UIControlStateNormal];
 	
     [self registerMediaPlayerNotifications];
+	[gradientBackground setMusicPlayer:musicPlayer];
 }
 
 #pragma mark - IBActions
