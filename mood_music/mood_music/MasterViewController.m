@@ -10,7 +10,6 @@
 
 @implementation MasterViewController
 
-@synthesize currentMediaCollection;
 @synthesize musicPlayer;
 @synthesize volumeSlider;
 @synthesize playPauseButton;
@@ -77,7 +76,7 @@
 	
 	musicPlayer = [MPMusicPlayerController iPodMusicPlayer];
     [volumeSlider setValue:[musicPlayer volume]];
-	
+	[musicPlayer setRepeatMode:MPMusicRepeatModeAll];
 	if ([musicPlayer playbackState] == MPMusicPlaybackStatePlaying)
         [playPauseButton setImage:[UIImage imageNamed:@"pauseButton.png"] forState:UIControlStateNormal];
 	else
