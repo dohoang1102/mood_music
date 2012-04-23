@@ -15,13 +15,11 @@
 
 @interface PinchGradientView : UIView <NSURLConnectionDelegate>
 
-@property(nonatomic,readwrite) NSInteger animationIndex;
 @property (nonatomic, strong) MPMusicPlayerController *musicPlayer;
 @property(nonatomic,strong) NSTimer* animationTimer;
 @property(nonatomic,strong) NSArray* pitchData;
 @property(nonatomic,strong) NSURLConnection* connection;
 @property(nonatomic,strong) NSMutableData* recivedData;
-@property(nonatomic,readwrite) BOOL isAnimating;
 
 - (void)loadDataAtURL:(NSURL *)url;
 - (void)cancelLoading;

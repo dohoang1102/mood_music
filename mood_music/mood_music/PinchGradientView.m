@@ -8,17 +8,15 @@
 
 #import "PinchGradientView.h"
 
-#define UPDATE_DURATION 0.01f
+#define UPDATE_DURATION 1.f
 
 @implementation PinchGradientView
 
 @synthesize musicPlayer;
-@synthesize animationIndex;
 @synthesize pitchData;
 @synthesize recivedData;
 @synthesize connection;
 @synthesize animationTimer;
-@synthesize isAnimating;
 
 + (Class)layerClass 
 {
@@ -30,7 +28,6 @@
 	self = [super initWithCoder:aDecoder];
     if (self) 
 	{
-		animationIndex = 0;
         animationTimer = [NSTimer scheduledTimerWithTimeInterval:UPDATE_DURATION target:self selector:@selector(performGradientAnimationFromIndex) userInfo:nil repeats:YES];
     }
     return self;
@@ -52,6 +49,7 @@
 	// every time we get an response it might be a forward, so we discard what data we have
 	recivedData = nil;
 	recivedData = [[NSMutableData alloc] init];
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -67,6 +65,7 @@
 		recivedData = nil;
 	}
 	connection = nil;
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 - (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error
@@ -75,6 +74,7 @@
 	connection = nil;
 	recivedData = nil;
 	pitchData = nil;
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 #pragma mark - Public methods
@@ -92,9 +92,6 @@
 	NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
 	[connection cancel];
 	connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-	// schedule at run loop so any ui event won't prevent the erquest to start
-	//[connection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-	//[connection start];
 }
 
 #pragma mark - Private methods
@@ -102,11 +99,12 @@
 - (void)animFrom:(NSArray*)arrayColorFrom animTo:(NSArray*)arrayColorTo withDuration:(NSNumber*)duration
 {
     CAGradientLayer *gLayer = (CAGradientLayer *)self.layer;
+	NSArray* prevColor = gLayer.colors;
     gLayer.colors = arrayColorTo;
 
     CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"colors"];
-    anim.fromValue = arrayColorFrom;
-    anim.duration = [duration floatValue] * 0.9f;
+    anim.fromValue = prevColor;
+    anim.duration = [duration floatValue];
 	anim.toValue = arrayColorTo;
     anim.timingFunction = [CAMediaTimingFunction 
                            functionWithName:kCAMediaTimingFunctionEaseOut];
@@ -151,7 +149,6 @@
         
         // on main thread set data arrays
         dispatch_async(dispatch_get_main_queue(), ^{
-			animationIndex = 0;
             pitchData = [NSArray arrayWithArray:buffer];
         });
     });
@@ -161,27 +158,17 @@
 {
 	if( pitchData.count > 0 )
 	{
-		if (!isAnimating)
+
+		NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"start >= %f AND start <= %f", (float)musicPlayer.currentPlaybackTime, (float)musicPlayer.currentPlaybackTime + 2.f]];
+		NSMutableArray* currentPinch = [NSMutableArray arrayWithArray:pitchData];
+		[currentPinch filterUsingPredicate:predicate];
+		if (currentPinch.count > 1)
 		{
-			NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"start >= %f AND start <= %f", (float)musicPlayer.currentPlaybackTime, (float)musicPlayer.currentPlaybackTime + 2]];
-			NSMutableArray* currentPinch = [NSMutableArray arrayWithArray:pitchData];
-			[currentPinch filterUsingPredicate:predicate];
-			if (currentPinch.count > 1)
-			{
-				NSNumber* duration = [(NSDictionary*)[currentPinch objectAtIndex:0] objectForKey:@"duration"];
-				NSArray* colorBufferFrom = [(NSDictionary*)[currentPinch objectAtIndex:0] objectForKey:@"colorBuffer"];
-				NSArray* colorBufferTo = [(NSDictionary*)[currentPinch objectAtIndex:1] objectForKey:@"colorBuffer"];
-				[self animFrom:colorBufferFrom animTo:colorBufferTo withDuration:duration];
-				isAnimating = YES;
-				[self performSelector:@selector(stopAnimation) withObject:nil afterDelay:[duration  floatValue]];
-			}
+			NSArray* colorBufferFrom = [(NSDictionary*)[currentPinch objectAtIndex:0] objectForKey:@"colorBuffer"];
+			NSArray* colorBufferTo = [(NSDictionary*)[currentPinch objectAtIndex:1] objectForKey:@"colorBuffer"];
+			[self animFrom:colorBufferFrom animTo:colorBufferTo withDuration:[NSNumber numberWithFloat:UPDATE_DURATION]];
 		}
 	}
-}
-
-- (void)stopAnimation
-{
-	isAnimating = NO;
 }
 
 @end
