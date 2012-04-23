@@ -72,6 +72,7 @@
 	NSLog(@"Failed to load data at %@, %@", theConnection, [error localizedDescription]);
 	connection = nil;
 	recivedData = nil;
+	pitchData = nil;
 }
 
 #pragma mark - Public methods
@@ -81,6 +82,7 @@
 	[connection cancel];
 	connection = nil;
 	recivedData = nil;
+	pitchData = nil;
 }
 
 - (void)loadDataAtURL:(NSURL *)url
@@ -134,11 +136,15 @@
         {
             NSArray* pitches =[seg valueForKey:@"pitches"];
 			NSMutableArray* colorBuffer = [NSMutableArray array];
+			NSMutableDictionary* dict = [NSMutableDictionary dictionary];
 			for(NSNumber* pitch in pitches)
 			{
 				[colorBuffer addObject:[blockSelf pitchToColorHsb:pitch]];
 			}
-			[buffer addObject:colorBuffer];
+			[dict setObject:colorBuffer forKey:@"colorBuffer"];
+			[dict setObject:[seg valueForKey:@"start"] forKey:@"start"];
+			[dict setObject:[seg valueForKey:@"duration"] forKey:@"duration"];
+			[buffer addObject:dict];
         }
         
         // on main thread set data arrays
@@ -155,8 +161,9 @@
 	{
 		if( animationIndex > pitchData.count - 1 )
 			animationIndex = 0;
-		[self animFrom:[pitchData objectAtIndex:animationIndex] animto:[pitchData objectAtIndex:++animationIndex]];
-
+		NSArray* colorBufferFrom = [(NSDictionary*)[pitchData objectAtIndex:animationIndex] objectForKey:@"colorBuffer"];
+		NSArray* colorBufferTo = [(NSDictionary*)[pitchData objectAtIndex:++animationIndex] objectForKey:@"colorBuffer"];
+		[self animFrom:colorBufferFrom animto:colorBufferTo];
 	}
 }
 
